@@ -1,0 +1,26 @@
+{
+  "name": "monuments",
+  "version": "1.0.0",
+  "description": "Rendre dynamique une page web afin d'afficher des informations sur les monuments lorsque l'utilisateur clique sur un bouton.",
+  "main": "postcss.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i ./src/input.css -o ./style.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuirz/monuments.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tuirz/monuments/issues"
+  },
+  "homepage": "https://github.com/tuirz/monuments#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.5"
+  }
+}

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les monuments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +14,58 @@
 </head>
 
 <body>
-    <header>
-        <h1>Les monuments</h1>
+    <header class="bg-gray-900 text-white py-6 text-center">
+        <nav class="flex justify-between items-center p-4">
+            <div class="logo">
+                <img src="/images/pin.svg" alt="Logo" class="h-12">
+            </div>
+        <h3 class="text-4xl font-bold">ExploM: <h3>L'Explorateur de monuments.</h3></h1>
     </header>
+
+    <main>
+        <ul class="cards">
+            <li class="card" onclick="window.location.href='monument1.html'">
+                <img src="/images/monument1.jpg" alt="Monument 1">
+                <h2>Monument 1</h2>
+                <p>Description du monument 1.</p>
+            </li>
+            <li class="card" onclick="window.location.href='monument2.html'">
+                <img src="/images/monument2.jpg" alt="Monument 2">
+                <h2>Monument 2</h2>
+                <p>Description du monument 2.</p>
+            </li>
+            <li class="card" onclick="window.location.href='monument3.html'">
+                <img src="/images/monument3.jpg" alt="Monument 3">
+                <h2>Monument 3</h2>
+                <p>Description du monument 3.</p>
+            </li>
+            <li class="card" onclick="window.location.href='monument4.html'">
+                <img src="/images/monument4.jpg" alt="Monument 4">
+                <h2>Monument 4</h2>
+                <p>Description du monument 4.</p>
+            </li>
+            <li class="card" onclick="window.location.href='monument5.html'">
+                <img src="/images/monument5.jpg" alt="Monument 5">
+                <h2>Monument 5</h2>
+                <p>Description du monument 5.</p>
+            </li>
+            <li class="card" onclick="window.location.href='monument6.html'">
+                <img src="/images/monument6.jpg" alt="Monument 6">
+                <h2>Monument 6</h2>
+                <p>Description du monument 6.</p>
+            </li>
+        </ul>
+
+        <footer class="bg-gray-900 text-white py-6 text-center">
+            <p>© 2025 Monuments. Réalisé par <a href="https://www.linkedin.com/in/luigi-soufar/">Luigi SOUFAR</a> pour Simplon DEV Inté P3.</p>
+            <p>Contact: <a href="mailto:'tuirzz@icloud.com'">
+                <img src="/images/email.png" alt="Mail" class="mail-icon">
+            </a></p>
+            <p>Suivez-nous sur nos réseaux sociaux:</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/"><img src="/images/facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/"><img src="/images/instagram.png" alt="Instagram"></a>
+                <a href="https://www.twitter.com/"><img src="/images/twitter.png" alt="Twitter"></a>
     <script type="text/javascript" src="script.js"></script>
 </body>
 
