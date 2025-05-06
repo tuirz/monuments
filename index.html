@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 
 <body>
@@ -31,62 +33,86 @@
         <p class="text-center text-gray-600 mb-8">Découvrez les monuments emblématiques de France.</p>
         <ul class="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-4 border-t-2 border-gray-300 rounded-lg">
             <li class="card cursor-pointer" onclick="toggleDescription(this)">
-                <img src="/images/eiffel.jpg" alt="Tour Eiffel" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <img src="/images/eiffel.jpg" alt="Tour Eiffel" class="w-full h-72 object-cover object-bottom rounded-t-lg mt-4">
                 <h2 class="text-xl font-bold mt-2 hidden">Tour Eiffel</h2>
                 <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
                     Symbole de Paris et de la France, la Tour Eiffel, construite en 1889, culmine à 330 mètres et attire chaque année des millions de visiteurs venus admirer sa vue panoramique sur la capitale.
-                    <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
                         <a href="monument1.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                        <button class="text-green-600 hover:underline" onclick="showMap(event, 'eiffel', this)">Y aller</button>
+                    </div>
+                    <div class="map-container hidden mt-4">
+                        <div class="w-full h-64 rounded" id="map-eiffel"></div>
                     </div>
                 </div>
             </li>
             <li class="card cursor-pointer" onclick="toggleDescription(this)">
-                <img src="/images/michel.jpg" alt="Mont Saint-Michel" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <img src="/images/michel.jpg" alt="Mont Saint-Michel" class="w-full h-72 object-cover object-bottom rounded-t-lg mt-4">
                 <h2 class="text-xl font-bold mt-2 hidden">Mont Saint-Michel</h2>
                 <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
                     Situé en Normandie, ce site classé au patrimoine mondial de l’UNESCO est célèbre pour son abbaye perchée sur un îlot rocheux, entouré par les plus grandes marées d’Europe.
-                    <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
                         <a href="monument2.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                        <button class="text-green-600 hover:underline" onclick="showMap(event, 'michel', this)">Y aller</button>
+                    </div>
+                    <div class="map-container hidden mt-4">
+                        <div class="w-full h-64 rounded" id="map-michel"></div>
                     </div>
                 </div>
             </li>
             <li class="card cursor-pointer" onclick="toggleDescription(this)">
-                <img src="/images/dame.jpg" alt="Cathédrale Notre-Dame de Paris" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <img src="/images/dame.jpg" alt="Cathédrale Notre-Dame de Paris" class="w-full h-72 object-cover object-bottom rounded-t-lg mt-4">
                 <h2 class="text-xl font-bold mt-2 hidden">Cathédrale Notre-Dame de Paris</h2>
                 <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
                     Chef-d’œuvre de l’architecture gothique, la cathédrale, commencée au XIIe siècle, est connue pour ses vitraux, ses gargouilles et son histoire littéraire et religieuse.
-                    <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
                         <a href="monument3.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                        <button class="text-green-600 hover:underline" onclick="showMap(event, 'dame', this)">Y aller</button>
+                    </div>
+                    <div class="map-container hidden mt-4">
+                        <div class="w-full h-64 rounded" id="map-dame"></div>
                     </div>
                 </div>
             </li>
             <li class="card cursor-pointer" onclick="toggleDescription(this)">
-                <img src="/images/triomphe.jpg" alt="Arc de Triomphe" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <img src="/images/triomphe.jpg" alt="Arc de Triomphe" class="w-full h-72 object-cover object-bottom rounded-t-lg mt-4">
                 <h2 class="text-xl font-bold mt-2 hidden">Arc de Triomphe</h2>
                 <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
                     Érigé sur la place de l’Étoile à Paris, ce monument commémore les victoires napoléoniennes et abrite la tombe du Soldat inconnu sous sa voûte.
-                    <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
                         <a href="monument4.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                        <button class="text-green-600 hover:underline" onclick="showMap(event, 'triomphe', this)">Y aller</button>
+                    </div>
+                    <div class="map-container hidden mt-4">
+                        <div class="w-full h-64 rounded" id="map-triomphe"></div>
                     </div>
                 </div>
             </li>
             <li class="card cursor-pointer" onclick="toggleDescription(this)">
-                <img src="/images/basilique.jpg" alt="Basilique du Sacré-Cœur" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <img src="/images/basilique.jpg" alt="Basilique du Sacré-Cœur" class="w-full h-72 object-cover object-bottom rounded-t-lg mt-4">
                 <h2 class="text-xl font-bold mt-2 hidden">Basilique du Sacré-Cœur</h2>
                 <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
                     Dominant la butte Montmartre, la basilique blanche offre une vue imprenable sur Paris et est un haut lieu de pèlerinage et de tourisme.
-                    <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
                         <a href="monument5.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                        <button class="text-green-600 hover:underline" onclick="showMap(event, 'basilique', this)">Y aller</button>
+                    </div>
+                    <div class="map-container hidden mt-4">
+                        <div class="w-full h-64 rounded" id="map-basilique"></div>
                     </div>
                 </div>
             </li>
             <li class="card cursor-pointer" onclick="toggleDescription(this)">
-                <img src="/images/pantheon.jpg" alt="Panthéon" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <img src="/images/pantheon.jpg" alt="Panthéon" class="w-full h-72 object-cover object-bottom rounded-t-lg mt-4">
                 <h2 class="text-xl font-bold mt-2 hidden">Panthéon</h2>
                 <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
                     Situé dans le Quartier Latin, ce monument néoclassique abrite les sépultures de grandes personnalités françaises comme Voltaire, Rousseau, Victor Hugo ou Marie Curie.
-                    <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
                         <a href="monument6.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                        <button class="text-green-600 hover:underline" onclick="showMap(event, 'pantheon', this)">Y aller</button>
+                    </div>
+                    <div class="map-container hidden mt-4">
+                        <div class="w-full h-64 rounded" id="map-pantheon"></div>
                     </div>
                 </div>
             </li>
@@ -100,8 +126,12 @@
                 <h2 class="text-xl font-bold mt-2 hidden">Château de Versailles</h2>
                 <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
                     Ancienne résidence des rois de France, ce château est célèbre pour ses jardins à la française, la galerie des Glaces et son histoire liée à Louis XIV.
-                    <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
                         <a href="monument7.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                        <button class="text-green-600 hover:underline" onclick="showMap(event, 'versailles', this)">Y aller</button>
+                    </div>
+                    <div class="map-container hidden mt-4">
+                        <div class="w-full h-64 rounded" id="map-versailles"></div>
                     </div>
                 </div>
             </li>
@@ -110,8 +140,12 @@
                 <h2 class="text-xl font-bold mt-2 hidden">Château de Chambord</h2>
                 <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
                     Chef-d’œuvre de la Renaissance, ce château du Val de Loire impressionne par son architecture unique, son escalier à double révolution et ses vastes forêts.
-                    <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
                         <a href="monument8.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                        <button class="text-green-600 hover:underline" onclick="showMap(event, 'chambord', this)">Y aller</button>
+                    </div>
+                    <div class="map-container hidden mt-4">
+                        <div class="w-full h-64 rounded" id="map-chambord"></div>
                     </div>
                 </div>
             </li>
@@ -120,8 +154,12 @@
                 <h2 class="text-xl font-bold mt-2 hidden">Château de Chenonceau</h2>
                 <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
                     Surnommé le "château des dames", il enjambe le Cher avec élégance et est réputé pour ses jardins raffinés et son histoire marquée par de grandes femmes.
-                    <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
                         <a href="monument10.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                        <button class="text-green-600 hover:underline" onclick="showMap(event, 'chenonceau', this)">Y aller</button>
+                    </div>
+                    <div class="map-container hidden mt-4">
+                        <div class="w-full h-64 rounded" id="map-chenonceau"></div>
                     </div>
                 </div>
             </li>
@@ -130,13 +168,24 @@
                 <h2 class="text-xl font-bold mt-2 hidden">Château de Chantilly</h2>
                 <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
                     Ce château, entouré d'un parc magnifique, abrite le musée Condé et est célèbre pour ses collections d'art et son histoire liée à la famille de Condé.
-                    <div class="mt-2">
+                    <div class="mt-2 flex gap-2">
                         <a href="#" class="text-blue-600 hover:underline">Voir la fiche</a>
+                        <button class="text-green-600 hover:underline" onclick="showMap(event, 'chantilly', this)">Y aller</button>
+                    </div>
+                    <div class="map-container hidden mt-4">
+                        <div class="w-full h-64 rounded" id="map-chantilly"></div>
                     </div>
                 </div>
             </li>
         </ul>
     </main>
+    
+    <div id="map-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-4 relative w-full max-w-md">
+            <button onclick="closeMap()" class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-xl">&times;</button>
+            <div id="map" class="w-full h-64 rounded"></div>
+        </div>
+    </div>
 
     <footer class="bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800">
         <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
