@@ -29,72 +29,122 @@
     <main class="max-w-10xl mx-auto p-4">
         <h1 class="text-4xl font-bold text-center mt-8">Monuments emblématiques</h1>
         <p class="text-center text-gray-600 mb-8">Découvrez les monuments emblématiques de France.</p>
-        <ul class=" cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-4 border-t-2 border-gray-300 rounded-lg">
-            <li class="card" onclick="window.location.href='monument1.html'">
-                <img src="/images/eiffel.jpg" alt="Tour Eiffel">
-                <h2>Tour Eiffel</h2>
-                <p>Symbole de Paris et de la France, la Tour Eiffel, construite en 1889, culmine à 330 mètres et attire chaque année des millions de visiteurs venus admirer sa vue panoramique sur la capitale.</p>
+        <ul class="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-4 border-t-2 border-gray-300 rounded-lg">
+            <li class="card cursor-pointer" onclick="toggleDescription(this)">
+                <img src="/images/eiffel.jpg" alt="Tour Eiffel" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <h2 class="text-xl font-bold mt-2 hidden">Tour Eiffel</h2>
+                <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
+                    Symbole de Paris et de la France, la Tour Eiffel, construite en 1889, culmine à 330 mètres et attire chaque année des millions de visiteurs venus admirer sa vue panoramique sur la capitale.
+                    <div class="mt-2">
+                        <a href="monument1.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                    </div>
+                </div>
             </li>
-            <li class="card" onclick="window.location.href='monument2.html'">
-                <img src="/images/michel.jpg" alt="Mont Saint-Michel">
-                <h2>Mont Saint-Michel</h2>
-                <p>Situé en Normandie, ce site classé au patrimoine mondial de l’UNESCO est célèbre pour son abbaye perchée sur un îlot rocheux, entouré par les plus grandes marées d’Europe.</p>
+            <li class="card cursor-pointer" onclick="toggleDescription(this)">
+                <img src="/images/michel.jpg" alt="Mont Saint-Michel" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <h2 class="text-xl font-bold mt-2 hidden">Mont Saint-Michel</h2>
+                <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
+                    Situé en Normandie, ce site classé au patrimoine mondial de l’UNESCO est célèbre pour son abbaye perchée sur un îlot rocheux, entouré par les plus grandes marées d’Europe.
+                    <div class="mt-2">
+                        <a href="monument2.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                    </div>
+                </div>
             </li>
-            <li class="card" onclick="window.location.href='monument3.html'">
-                <img src="/images/dame.jpg" alt="Cathédrale Notre-Dame de Paris">
-                <h2>Cathédrale Notre-Dame de Paris</h2>
-                <p>Chef-d’œuvre de l’architecture gothique, la cathédrale, commencée au XIIe siècle, est connue pour ses vitraux, ses gargouilles et son histoire littéraire et religieuse.</p>
+            <li class="card cursor-pointer" onclick="toggleDescription(this)">
+                <img src="/images/dame.jpg" alt="Cathédrale Notre-Dame de Paris" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <h2 class="text-xl font-bold mt-2 hidden">Cathédrale Notre-Dame de Paris</h2>
+                <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
+                    Chef-d’œuvre de l’architecture gothique, la cathédrale, commencée au XIIe siècle, est connue pour ses vitraux, ses gargouilles et son histoire littéraire et religieuse.
+                    <div class="mt-2">
+                        <a href="monument3.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                    </div>
+                </div>
             </li>
-            <li class="card" onclick="window.location.href='monument4.html'">
-                <img src="/images/triomphe.jpg" alt="Arc de Triomphe">
-                <h2>Arc de Triomphe
-                </h2>
-                <p>Érigé sur la place de l’Étoile à Paris, ce monument commémore les victoires napoléoniennes et abrite la tombe du Soldat inconnu sous sa voûte.</p>
+            <li class="card cursor-pointer" onclick="toggleDescription(this)">
+                <img src="/images/triomphe.jpg" alt="Arc de Triomphe" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <h2 class="text-xl font-bold mt-2 hidden">Arc de Triomphe</h2>
+                <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
+                    Érigé sur la place de l’Étoile à Paris, ce monument commémore les victoires napoléoniennes et abrite la tombe du Soldat inconnu sous sa voûte.
+                    <div class="mt-2">
+                        <a href="monument4.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                    </div>
+                </div>
             </li>
-            <li class="card" onclick="window.location.href='monument5.html'">
-                <img src="/images/basilique.jpg" alt="Basilique du Sacré-Cœur">
-                <h2>Basilique du Sacré-Cœur
-                </h2>
-                <p>Dominant la butte Montmartre, la basilique blanche offre une vue imprenable sur Paris et est un haut lieu de pèlerinage et de tourisme.</p>
+            <li class="card cursor-pointer" onclick="toggleDescription(this)">
+                <img src="/images/basilique.jpg" alt="Basilique du Sacré-Cœur" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <h2 class="text-xl font-bold mt-2 hidden">Basilique du Sacré-Cœur</h2>
+                <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
+                    Dominant la butte Montmartre, la basilique blanche offre une vue imprenable sur Paris et est un haut lieu de pèlerinage et de tourisme.
+                    <div class="mt-2">
+                        <a href="monument5.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                    </div>
+                </div>
             </li>
-            <li class="card" onclick="window.location.href='monument6.html'">
-                <img src="/images/pantheon.jpg" alt="Panthéon">
-                <h2>Panthéon</h2>
-                <p>Situé dans le Quartier Latin, ce monument néoclassique abrite les sépultures de grandes personnalités françaises comme Voltaire, Rousseau, Victor Hugo ou Marie Curie.</p>
+            <li class="card cursor-pointer" onclick="toggleDescription(this)">
+                <img src="/images/pantheon.jpg" alt="Panthéon" class="w-full h-72 object-cover object-bottom rounded-t-lg">
+                <h2 class="text-xl font-bold mt-2 hidden">Panthéon</h2>
+                <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
+                    Situé dans le Quartier Latin, ce monument néoclassique abrite les sépultures de grandes personnalités françaises comme Voltaire, Rousseau, Victor Hugo ou Marie Curie.
+                    <div class="mt-2">
+                        <a href="monument6.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                    </div>
+                </div>
             </li>
         </ul>
+
         <h1 class="text-4xl font-bold text-center mt-8">Autres monuments</h1>
         <p class="text-center text-gray-600 mb-8">Découvrez nos châteaux français emblématiques.</p>
         <ul class="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 border-t-2 border-gray-300 rounded-lg">
-            <li class="card" onclick="window.location.href='monument7.html'">
-                <img src="/images/versailles.png" alt="Château de Versailles">
-                <h2>Château de Versailles</h2>
-                <p>Ancienne résidence des rois de France, ce château est célèbre pour ses jardins à la française, la galerie des Glaces et son histoire liée à Louis XIV.</p>
+            <li class="card cursor-pointer" onclick="toggleDescription(this)">
+                <img src="/images/versailles.png" alt="Château de Versailles" class="w-full h-48 object-cover object-bottom rounded-t-lg">
+                <h2 class="text-xl font-bold mt-2 hidden">Château de Versailles</h2>
+                <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
+                    Ancienne résidence des rois de France, ce château est célèbre pour ses jardins à la française, la galerie des Glaces et son histoire liée à Louis XIV.
+                    <div class="mt-2">
+                        <a href="monument7.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                    </div>
+                </div>
             </li>
-            <li class="card" onclick="window.location.href='monument8.html'">
-                <img src="/images/chambord.webp" alt="Château de Chambord">
-                <h2>Château de Chambord</h2>
-                <p>Chef-d’œuvre de la Renaissance, ce château du Val de Loire impressionne par son architecture unique, son escalier à double révolution et ses vastes forêts.</p>
+            <li class="card cursor-pointer" onclick="toggleDescription(this)">
+                <img src="/images/chambord.webp" alt="Château de Chambord" class="w-full h-48 object-cover object-bottom rounded-t-lg">
+                <h2 class="text-xl font-bold mt-2 hidden">Château de Chambord</h2>
+                <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
+                    Chef-d’œuvre de la Renaissance, ce château du Val de Loire impressionne par son architecture unique, son escalier à double révolution et ses vastes forêts.
+                    <div class="mt-2">
+                        <a href="monument8.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                    </div>
+                </div>
             </li>
-            <li class="card" onclick="window.location.href='monument10.html'">
-                <img src="/images/chenonceau.jpg" alt="Château de Chenonceau">
-                <h2>Château de Chenonceau</h2>
-                <p>Surnommé le "château des dames", il enjambe le Cher avec élégance et est réputé pour ses jardins raffinés et son histoire marquée par de grandes femmes.</p>
+            <li class="card cursor-pointer" onclick="toggleDescription(this)">
+                <img src="/images/chenonceau.jpg" alt="Château de Chenonceau" class="w-full h-48 object-cover object-bottom rounded-t-lg">
+                <h2 class="text-xl font-bold mt-2 hidden">Château de Chenonceau</h2>
+                <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
+                    Surnommé le "château des dames", il enjambe le Cher avec élégance et est réputé pour ses jardins raffinés et son histoire marquée par de grandes femmes.
+                    <div class="mt-2">
+                        <a href="monument10.html" class="text-blue-600 hover:underline">Voir la fiche</a>
+                    </div>
+                </div>
             </li>
-            <li>
-                <img src="/images/chantilly.jpg" alt="Château de Chantilly">
-                <h2>Château de Chantilly</h2>
-                <p>Ce château, entouré d'un parc magnifique, abrite le musée Condé et est célèbre pour ses collections d'art et son histoire liée à la famille de Condé.</p>
+            <li class="card cursor-pointer" onclick="toggleDescription(this)">
+                <img src="/images/chantilly.jpg" alt="Château de Chantilly" class="w-full h-48 object-cover object-bottom rounded-t-lg">
+                <h2 class="text-xl font-bold mt-2 hidden">Château de Chantilly</h2>
+                <div class="description hidden mt-2 text-gray-700 dark:text-gray-200">
+                    Ce château, entouré d'un parc magnifique, abrite le musée Condé et est célèbre pour ses collections d'art et son histoire liée à la famille de Condé.
+                    <div class="mt-2">
+                        <a href="#" class="text-blue-600 hover:underline">Voir la fiche</a>
+                    </div>
+                </div>
             </li>
         </ul>
     </main>
 
-    <footer class="rounded-lg shadow-sm m-4 dark:bg-gray-800">
+    <footer class="bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800">
         <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
             <div>
                 <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
                     © 2025 Monuments. Réalisé par
-                    <a href="https://www.linkedin.com/in/luigi-soufar/" class="hover:underline font-semibold">Luigi SOUFAR</a><a href="mailto:tuirzz@icloud.com" class="inline-block align-middle ml-1">
+                    <a href="https://www.linkedin.com/in/luigi-soufar/" class="hover:underline font-semibold">Luigi SOUFAR</a>
+                    <a href="mailto:tuirzz@icloud.com" class="inline-block align-middle ml-1">
                         <img src="/images/email.png" alt="Mail" class="inline h-5 w-5 align-middle" />
                     </a>
                     pour Simplon DEV Inté P3.
