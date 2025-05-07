@@ -1,47 +1,49 @@
-// Gestion description et accessibilité
+// Gestion description et accessibilité + fermeture globale
 function toggleDescription(card) {
-    // Si on clique sur un bouton ou un lien, ne rien faire
-    if (event.target.closest('button') || event.target.closest('a')) return;
-
-    document.querySelectorAll('.card').forEach(c => {
+    // Ferme toutes les autres cards d'abord
+    document.querySelectorAll('.card.active').forEach(c => {
         if (c !== card) {
             c.setAttribute('aria-expanded', 'false');
             c.querySelector('.description').classList.add('hidden');
             c.querySelector('h2, h3').classList.add('hidden');
+            c.classList.remove('active');
             const mapCont = c.querySelector('.map-container');
             if (mapCont) mapCont.classList.add('hidden');
         }
     });
+
     const desc = card.querySelector('.description');
     const title = card.querySelector('h2, h3');
     const expanded = desc.classList.toggle('hidden') ? 'false' : 'true';
     card.setAttribute('aria-expanded', expanded);
     title.classList.toggle('hidden');
+
+    const cards = card.closest('.cards');
+    if (!desc.classList.contains('hidden')) {
+        cards.classList.add('grayscale-on');
+        card.classList.add('active');
+    } else {
+        cards.classList.remove('grayscale-on');
+        card.classList.remove('active');
+    }
 }
 
-// Bouton fermer dans la description
-function closeDescription(event, btn) {
-    event.stopPropagation();
-    const desc = btn.closest('.description');
-    const card = btn.closest('.card');
-    desc.classList.add('hidden');
-    card.querySelector('h2').classList.add('hidden');
-    const mapCont = desc.querySelector('.map-container');
-    if (mapCont) mapCont.classList.add('hidden');
-    card.setAttribute('aria-expanded', 'false');
-}
-
-// Click-outside pour fermer toute description ouverte
-document.addEventListener('click', function(e) {
+// Ferme tout si clic hors carte
+document.addEventListener('click', e => {
     if (!e.target.closest('.card')) {
-        document.querySelectorAll('.description').forEach(desc => desc.classList.add('hidden'));
-        document.querySelectorAll('.card h2').forEach(h2 => h2.classList.add('hidden'));
-        document.querySelectorAll('.map-container').forEach(mc => mc.classList.add('hidden'));
-        document.querySelectorAll('.card').forEach(c => c.setAttribute('aria-expanded', 'false'));
+        document.querySelectorAll('.card').forEach(c => {
+            c.setAttribute('aria-expanded', 'false');
+            c.querySelector('.description').classList.add('hidden');
+            c.querySelector('h2, h3').classList.add('hidden');
+            c.classList.remove('active');
+            const mapCont = c.querySelector('.map-container');
+            if (mapCont) mapCont.classList.add('hidden');
+        });
+        document.querySelectorAll('.cards').forEach(cards => cards.classList.remove('grayscale-on'));
     }
 });
 
-// Map Leaflet
+// MAP LEAFLET
 const monumentCoords = {
     eiffel: [48.8584, 2.2945],
     michel: [48.6361, -1.5115],
@@ -80,13 +82,7 @@ function showMap(event, monument, btn) {
     }
 }
 
-// Bouton retour en haut
-const backToTop = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) backToTop.classList.remove('hidden');
-    else backToTop.classList.add('hidden');
-});
-
+// GESTION MODALES
 document.addEventListener('DOMContentLoaded', function () {
     // Empêche la fermeture quand on clique sur la map dans la modale
     const mapModal = document.getElementById('map-modal');
@@ -101,3 +97,41 @@ document.addEventListener('DOMContentLoaded', function () {
         container.addEventListener('click', function(e) { e.stopPropagation(); });
     });
 });
+
+function showItinerary(monument, evt) {
+    evt.stopPropagation(); // évite de fermer la card
+    if (!navigator.geolocation) {
+        alert("La géolocalisation n'est pas supportée par votre navigateur.");
+        return;
+    }
+    navigator.geolocation.getCurrentPosition(function(position) {
+        const userLatLng = [position.coords.latitude, position.coords.longitude];
+        const destLatLng = monumentCoords[monument];
+        const mapId = `map-${monument}`;
+        // Affiche la carte si besoin
+        showMap({stopPropagation:()=>{}}, monument);
+        // Utilise OSRM pour obtenir l'itinéraire
+        fetch(`https://router.project-osrm.org/route/v1/driving/${userLatLng[1]},${userLatLng[0]};${destLatLng[1]},${destLatLng[0]}?overview=full&geometries=geojson`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.routes && data.routes.length) {
+                    const route = data.routes[0].geometry;
+                    // Supprime l'ancien tracé si présent
+                    if (maps[mapId].routeLayer) {
+                        maps[mapId].removeLayer(maps[mapId].routeLayer);
+                    }
+                    maps[mapId].routeLayer = L.geoJSON(route, {color: 'blue', weight: 5}).addTo(maps[mapId]);
+                    // Marqueur utilisateur
+                    if (maps[mapId].userMarker) {
+                        maps[mapId].removeLayer(maps[mapId].userMarker);
+                    }
+                    maps[mapId].userMarker = L.marker(userLatLng, {title: "Vous"}).addTo(maps[mapId]);
+                    maps[mapId].fitBounds(L.geoJSON(route).getBounds(), {padding: [30, 30]});
+                } else {
+                    alert("Itinéraire non trouvé.");
+                }
+            });
+    }, function() {
+        alert("Impossible d'obtenir votre position.");
+    });
+}
